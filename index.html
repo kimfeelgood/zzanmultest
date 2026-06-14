@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#EDE8DF">
 <title>나의 AI 활용 레벨 진단 · L0~L5</title>
-<meta name="description" content="10개의 질문으로 나의 AI 활용 단계(L0~L5)를 진단하고 맞춤 커리큘럼을 추천받으세요.">
+<meta name="description" content="10개의 질문으로 나의 AI 활용 단계(L0~L5)를 진단해 보세요.">
 <meta property="og:title" content="나의 AI 활용 레벨 진단">
-<meta property="og:description" content="10개의 질문으로 나의 AI 활용 단계(L0~L5)를 진단하고 맞춤 커리큘럼을 추천받으세요.">
+<meta property="og:description" content="10개의 질문으로 나의 AI 활용 단계(L0~L5)를 진단해 보세요.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -116,7 +116,6 @@ h1 .hl{color:var(--ant-orange);}
 .distrow.me .dp{color:var(--ant-orange);}
 
 .cta-wrap{margin-top:22px; display:flex; flex-direction:column; gap:12px;}
-.cta-note{text-align:center; font-size:13px; color:var(--txt-soft); margin-bottom:2px;}
 .foot{text-align:center; font-size:11px; color:var(--txt-soft); opacity:.7; margin-top:26px; line-height:1.6;}
 a.btn{text-decoration:none;}
 </style>
@@ -129,7 +128,7 @@ a.btn{text-decoration:none;}
     <div class="intro-card">
       <span class="badge-top">AI 활용 레벨 진단</span>
       <h1>나는 지금<br><span class="hl">AI를 어디까지</span> 쓰고 있을까?</h1>
-      <p class="lead">10개의 질문에 답하면 나의 AI 활용 단계를<br><b>L0 ~ L5</b> 중 하나로 진단하고,<br>다음 단계로 가는 맞춤 커리큘럼을 추천해 드려요.</p>
+      <p class="lead">10개의 질문에 답하면 나의 AI 활용 단계를<br><b>L0 ~ L5</b> 중 하나로 진단해 드려요.</p>
       <div class="meta-row">
         <div class="meta"><b>10</b><span>개 질문</span></div>
         <div class="meta"><b>2분</b><span>소요</span></div>
@@ -185,8 +184,6 @@ a.btn{text-decoration:none;}
     </div>
 
     <div class="cta-wrap">
-      <p class="cta-note" id="rCtaNote"></p>
-      <a class="btn" id="rCta" href="#" target="_blank" rel="noopener">맞춤 커리큘럼으로 이동 →</a>
       <button class="btn btn-ghost" onclick="restart()">↺ 다시 진단하기</button>
     </div>
     <p class="foot">※ 분포 수치는 일반적인 조직의 AI 활용 분포 추정치입니다.<br>본 진단은 자기 점검용 참고 자료입니다.</p>
@@ -197,42 +194,30 @@ a.btn{text-decoration:none;}
 <script>
 /* ── 레벨 정의 ── */
 const LEVELS = [
-  { code:"L0", name:"기본 채팅", persona:"입문자", pct:65,
+  { code:"L0", name:"기본 채팅", persona:"입문자", pct:61,
     quote:"\"이미 AI를 쓰고 있다\"",
     desc:"단순히 챗봇처럼 질문하고 답을 받는 입문자 단계입니다. AI와 친해진 출발선에 있으니, 이제 '매번 설명하는 피로'를 없애는 다음 단계로 넘어갈 차례예요.",
-    tags:["Claude.ai","기본 프롬프트","모델 선택"],
-    url:"https://airoasting.github.io/claude_guide/claude-orientation.html",
-    cta:"L1 · 맞춤 프로젝트 세팅 배우러 가기" },
+    tags:["Claude.ai","기본 프롬프트","모델 선택"], },
   { code:"L1", name:"맞춤 프로젝트 세팅", persona:"세팅자", pct:20,
     quote:"\"매번 설명하는 피로가 사라진다\"",
     desc:"AI를 미리 세팅해두고 반복 업무를 효율화하는 세팅자 단계입니다. 프로젝트 지침과 멀티 페르소나로 이미 한 단계 앞서 있어요. 다음은 '쓰던 도구 안에서' AI가 직접 일하게 만들 차례입니다.",
-    tags:["Claude Projects","멀티 페르소나","프로젝트 지침","파일 업로드"],
-    url:"https://airoasting.github.io/claude_guide/project-intro.html",
-    cta:"L2 · 확장 프로그램 배우러 가기" },
+    tags:["Claude Projects","멀티 페르소나","프로젝트 지침","파일 업로드"], },
   { code:"L2", name:"확장 프로그램 (결과물 생성)", persona:"검수자", pct:10,
     quote:"\"쓰던 도구 안에서 AI가 일한다\"",
     desc:"브라우저·오피스 안에서 AI가 직접 결과물을 만들고 사람은 검수만 하는 검수자 단계입니다. 도구 안에 AI를 들였으니, 이제 내 PC·메일·일정까지 업무 흐름 전체를 연결할 차례예요.",
-    tags:["Claude in Chrome","MS Office 연동","결과물 자동 생성"],
-    url:"https://airoasting.github.io/claude_guide/chrome-plugin.html",
-    cta:"L3 · Cowork 배우러 가기" },
+    tags:["Claude in Chrome","MS Office 연동","결과물 자동 생성"], },
   { code:"L3", name:"Cowork (파일·업무 연결)", persona:"연결자", pct:5,
     quote:"\"내 PC와 일상 도구가 AI에 연결된다\"",
     desc:"Gmail·캘린더·드라이브·PC 파일을 AI에 연결해 업무 흐름을 잇는 연결자 단계입니다. 상위 5%에 해당해요. 다음은 '코드도 대화로' 만드는 자동화의 세계입니다.",
-    tags:["Claude Cowork","Gmail · Calendar","Drive · PC 파일","Connectors"],
-    url:"https://airoasting.github.io/claude_guide/cowork-intro.html",
-    cta:"L4 · Claude Code 배우러 가기" },
+    tags:["Claude Cowork","Gmail · Calendar","Drive · PC 파일","Connectors"], },
   { code:"L4", name:"Claude Code (노코드/CLI)", persona:"감독자", pct:3,
     quote:"\"코드도 대화로 만든다\"",
     desc:"AI가 개발과 자동 실행을 대신 처리하고 사람은 감독하는 감독자 단계입니다. 상위 3%의 영역이에요. 마지막 단계는 여러 AI를 하나의 팀처럼 설계·운영하는 오케스트레이션입니다.",
-    tags:["Claude Code","CLAUDE.md","Git/GitHub 연동","자동 실행"],
-    url:"https://airoasting.github.io/claude_guide/claude-code-101.html",
-    cta:"L5 · 멀티 에이전트 배우러 가기" },
+    tags:["Claude Code","CLAUDE.md","Git/GitHub 연동","자동 실행"], },
   { code:"L5", name:"멀티 에이전트 오케스트레이션", persona:"설계자", pct:1,
     quote:"\"조직이 AI 팀을 운영한다\"",
     desc:"여러 에이전트의 자율 협업을 설계하는 설계자 단계, 상위 1% 미만의 최상위 영역입니다. 이미 AI를 '쓰는' 사람이 아니라 'AI 팀을 운영하는' 사람이에요. Skills와 하네스 엔지니어링으로 더 깊이 들어가 보세요.",
-    tags:["Skills","서브 에이전트","Hooks · Plugins","하네스 엔지니어링","MCP"],
-    url:"https://airoasting.github.io/claude_guide/skills.html",
-    cta:"L5 · 심화 커리큘럼 보러 가기" }
+    tags:["Skills","서브 에이전트","Hooks · Plugins","하네스 엔지니어링","MCP"], }
 ];
 
 /* ── 질문 (각 보기 score = 그 행동이 가리키는 레벨 0~5) ── */
@@ -362,7 +347,7 @@ function renderResult(lvIdx){
   const L=LEVELS[lvIdx];
   document.getElementById('rCode').textContent=L.code;
   document.getElementById('rName').textContent=L.name;
-  document.getElementById('rPersona').textContent='🧭 '+L.persona+' 단계 · 상위 '+(L.code==='L0'? '—' : (LEVELS.slice(0,lvIdx+1).reduce((a,b)=>a+b.pct,0))+'% 진입')+'';
+  document.getElementById('rPersona').textContent='🧭 '+L.persona+' 단계 · 상위 '+L.pct+'%';
   document.getElementById('rQuote').textContent=L.quote;
   document.getElementById('rDesc').textContent=L.desc;
 
@@ -382,10 +367,6 @@ function renderResult(lvIdx){
     requestAnimationFrame(()=>{ setTimeout(()=>{ row.querySelector('.dbf').style.width=Math.max(l.pct/maxPct*100,4)+'%'; },60); });
   });
 
-  document.getElementById('rCtaNote').textContent='다음 단계로 가는 길 →';
-  const cta=document.getElementById('rCta');
-  cta.textContent=L.cta+' →';
-  cta.href=L.url;
 }
 
 // 뒤로가기 제스처 시 인트로로
